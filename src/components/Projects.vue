@@ -1,13 +1,10 @@
-<script setup>
-defineProps({
-    projects: {
-        type: Array,
-        required: true
-    }
-})
+<script setup lang="ts">
+defineProps<({
+    projects: string[]
+})>()
 </script>
 <template>
-    <section>
+    <section id="projects" class="wrapper">
         <h2>PROJECTS</h2>
         <ul>
             <li v-for="project in projects">

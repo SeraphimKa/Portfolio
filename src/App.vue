@@ -1,13 +1,16 @@
 <script setup>
+//Header
+import Header from './components/Header.vue';
+
+
+
+
 //TechStack
 import TechStack from './components/TechStack.vue';
-import html5 from './assets/html5.svg'
-import css from './assets/css.svg'
-import javascript from './assets/javascript.svg'
-import vue from './assets/vue.svg'
-import tailwind from './assets/tailwind.svg'
 
-const techs = [html5, css, javascript, vue, tailwind]
+const techsRaw = import.meta.glob('./assets/techs/*.svg', { as: 'url', eager: true })
+const techs = Object.values(techsRaw)
+
 
 //AboutMe
 import AboutMe from './components/AboutMe.vue'
@@ -18,15 +21,7 @@ const projects = ['link1', 'link2']
 </script>
 
 <template>
-  <header>
-    <h1>
-      Front-End Web Developer 👋🏻
-    </h1>
-    <div class="flex">
-      <img src="" alt="picture">
-      <p>Hi, I'm Seraphim Kaniaris, passionate Front-End Developer based in Athens, Greece</p>
-    </div>
-  </header>
+  <Header />
 
   <TechStack :techs="techs" />
 
@@ -40,19 +35,11 @@ const projects = ['link1', 'link2']
   color: var(--text);
 }
 
-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
-
 section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin:  1rem;
+  margin: 1rem;
   margin-bottom: 50vh;
   padding: 1px 1px;
 }
@@ -63,7 +50,6 @@ h1 {
 }
 
 p {
-  background-color: var(--secondary);
   padding: 10px;
 }
 
@@ -81,5 +67,12 @@ h2 {
 .flex {
   display: flex;
   gap: 15px;
+}
+
+.wrapper {
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: var(--secondary);
 }
 </style>
